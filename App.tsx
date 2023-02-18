@@ -9,9 +9,14 @@ import {
   View,
 } from 'react-native';
 import Navigation from './navigation';
+import {RecoilRoot} from 'recoil';
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <RecoilRoot>
+      <Navigation />
+    </RecoilRoot>
+  );
 }
 
 const styles = StyleSheet.create({});

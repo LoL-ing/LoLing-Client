@@ -4,7 +4,8 @@ export const friendsState = atom({
   key: 'friendsState',
   default: [
     {
-      nickname: '하아아아푸움',
+      nickname: 'recoil하아아아푸움',
+      profileImg: require('../assets/images/Irelia.png'),
       tier: 'Iron 4',
       line: 'top',
       lolingId: 'Soodoll',
@@ -201,7 +202,7 @@ export const profilesState = atom({
   key: 'profilesState',
   default: [
     {
-      nickname: 'Soodoll',
+      nickname: 'RecoilSoodoll',
       tier: 'Gold 3',
       winrate: '59%',
       KDA: '3.87',

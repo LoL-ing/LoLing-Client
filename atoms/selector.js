@@ -15,21 +15,21 @@ import {accessTokenState} from './atom';
 
 export const getMyProfileSelector = selector({
   key: `profile/get`,
-  get: async ({get}) => {
+  get: ({get}) => {
     //const {data} = await apiGetProfile();
-    const {data} = get(profilesState);
+    const data = get(profilesState);
     return data;
   },
   set: ({set}, newValue) => {
-    set(friendsState, newValue);
+    set(profilesState, newValue);
   },
 });
 
 export const getFriendsSelector = selector({
   key: `friends/get`,
-  get: async ({get}) => {
+  get: ({get}) => {
     //const {data} = await apiGetProfiles();
-    const {data} = get(friendsState);
+    const data = get(friendsState);
     return data;
   },
   set: ({set}, newValue) => {
@@ -50,9 +50,9 @@ export const getChampionsSelector = selector({
 
 export const getLoLAccountSelector = selector({
   key: `lol_account/get`,
-  get: async ({get}) => {
+  get: ({get}) => {
     //const {data} = await apiGetLoLAccount();
-    const {data} = get(lol_accountState);
+    const data = get(lol_accountState);
     return data;
   },
 });

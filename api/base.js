@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {API_URL} from '../config';
-import qs from 'qs';
+//import qs from 'qs';
 import {AsyncStorage} from 'react-native';
 /* axios 공통 config */
 export const axiosInstance = axios.create({

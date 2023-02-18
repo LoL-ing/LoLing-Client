@@ -29,7 +29,7 @@ import Chevron_Right from '../assets/icons/svg/fi_chevron-right.svg';
 //const friends = getFriends();
 //const MatchableUsers = getFriends();
 export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
-  const MyProfile = useRecoilValue(getMyProfileSelector);
+  const MyProfile = useRecoilValue(getMyProfileSelector)[0];
   const friends = useRecoilValue(getFriendsSelector);
   const MatchableUsers = useRecoilValue(getLoLAccountSelector);
 
@@ -44,7 +44,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
     <View
       style={{
         width: Layout.Width,
-        height: Layout.Height,
+        height: Layout.Height - 49,
         backgroundColor: Colors.backgroundBlack,
         paddingTop: useSafeAreaInsets().top,
         paddingBottom:
@@ -58,7 +58,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
         showsVerticalScrollIndicator={false}>
         <View style={styles.profileContainer}>
           <View style={styles.profileSummaryContainer}>
-            <Image style={styles.profileImg} source={MyProfile.profileImg} />
+            <Image style={styles.profileImg} source={MyProfile?.profileImg} />
 
             <View
               style={{
@@ -66,9 +66,9 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                 justifyContent: 'space-between',
               }}>
               <Text style={styles.profileNicknameText}>
-                {MyProfile.nickname}
+                {MyProfile?.nickname}
               </Text>
-              <Text style={styles.profileTierText}>{MyProfile.tier}</Text>
+              <Text style={styles.profileTierText}>{MyProfile?.tier}</Text>
               <View
                 style={{
                   width: Layout.Width * 0.4,
@@ -77,9 +77,9 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   justifyContent: 'space-between',
                 }}>
                 <Text style={styles.profileInfoText}>
-                  승률 {MyProfile.winrate}
+                  승률 {MyProfile?.winrate}
                 </Text>
-                <Text style={styles.profileInfoText}>KDA {MyProfile.KDA}</Text>
+                <Text style={styles.profileInfoText}>KDA {MyProfile?.KDA}</Text>
               </View>
             </View>
           </View>
@@ -107,10 +107,10 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                       marginTop: Layout.Height * 0.01,
                     }}>
                     <Text style={styles.profileWinRateText}>
-                      {MyProfile.champ1Winrate}
+                      {MyProfile?.champ1Winrate}
                     </Text>
                     <Text style={styles.profileKDAText}>
-                      / {MyProfile.champ1KDA}
+                      / {MyProfile?.champ1KDA}
                     </Text>
                   </View>
                 </View>
@@ -125,10 +125,10 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                       marginTop: Layout.Height * 0.01,
                     }}>
                     <Text style={styles.profileWinRateText}>
-                      {MyProfile.champ2Winrate}
+                      {MyProfile?.champ2Winrate}
                     </Text>
                     <Text style={styles.profileKDAText}>
-                      / {MyProfile.champ2KDA}
+                      / {MyProfile?.champ2KDA}
                     </Text>
                   </View>
                 </View>
@@ -143,10 +143,10 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                       marginTop: Layout.Height * 0.01,
                     }}>
                     <Text style={styles.profileWinRateText}>
-                      {MyProfile.champ3Winrate}
+                      {MyProfile?.champ3Winrate}
                     </Text>
                     <Text style={styles.profileKDAText}>
-                      / {MyProfile.champ3KDA}
+                      / {MyProfile?.champ3KDA}
                     </Text>
                   </View>
                 </View>
@@ -176,10 +176,10 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                       marginTop: Layout.Height * 0.01,
                     }}>
                     <Text style={styles.profileWinRateText}>
-                      {MyProfile.line1Winrate}
+                      {MyProfile?.line1Winrate}
                     </Text>
                     <Text style={styles.profileKDAText}>
-                      / {MyProfile.line1KDA}
+                      / {MyProfile?.line1KDA}
                     </Text>
                   </View>
                 </View>
@@ -194,10 +194,10 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                       marginTop: Layout.Height * 0.01,
                     }}>
                     <Text style={styles.profileWinRateText}>
-                      {MyProfile.line2Winrate}
+                      {MyProfile?.line2Winrate}
                     </Text>
                     <Text style={styles.profileKDAText}>
-                      / {MyProfile.line2KDA}
+                      / {MyProfile?.line2KDA}
                     </Text>
                   </View>
                 </View>
