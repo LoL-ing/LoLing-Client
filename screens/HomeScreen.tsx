@@ -10,23 +10,28 @@ import {
 } from 'react-native';
 import {useRecoilValue} from 'recoil';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {getFriendsSelector, getLoLAccountSelector} from '../atoms/selector';
+import {
+  getFriendsSelector,
+  getLoLAccountSelector,
+  getMyProfileSelector,
+} from '../atoms/selector';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import HomeScreenFriendList from '../components/HomeScreenFriendList';
-import getMyProfile from '../data/MyProfile';
-import getFriends from '../data/Friends';
+// import getMyProfile from '../data/MyProfile';
+// import getFriends from '../data/Friends';
 import {RootTabScreenProps} from '../types';
 // import {accessTokenState} from '../atoms/atom';
 //import jwt_decode from 'jwt-decode';
 import Chevron_Right from '../assets/icons/svg/fi_chevron-right.svg';
 
-const MyProfile = getMyProfile();
-const friends = getFriends();
-const MatchableUsers = getFriends();
+//const MyProfile = getMyProfile();
+//const friends = getFriends();
+//const MatchableUsers = getFriends();
 export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
-  //   const friends = useRecoilValue(getFriendsSelector);
-  //   const MatchableUsers = useRecoilValue(getLoLAccountSelector);
+  const MyProfile = useRecoilValue(getMyProfileSelector);
+  const friends = useRecoilValue(getFriendsSelector);
+  const MatchableUsers = useRecoilValue(getLoLAccountSelector);
 
   //  여기에서 토큰 -> lol_name 추출 해서 넣기
   // const myJWT = useRecoilValue(accessTokenState);
@@ -214,7 +219,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               <Chevron_Right />
             </Pressable>
           </View>
-          {/* <FlatList
+          <FlatList
             data={MatchableUsers}
             renderItem={({item}) => (
               <View style={styles.matchingContainer}>
@@ -262,7 +267,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
             )}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-          /> */}
+          />
         </View>
 
         <View style={styles.listContainer}>

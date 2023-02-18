@@ -9,14 +9,27 @@ import {
   apiGetLoLAccount,
   apiGetAccessToken,
 } from '../api/main';
-import {friendsState} from './atom';
+import {friendsState, profilesState} from './atom';
 import {lol_accountState} from './atom';
 import {accessTokenState} from './atom';
+
+export const getMyProfileSelector = selector({
+  key: `profile/get`,
+  get: async ({get}) => {
+    //const {data} = await apiGetProfile();
+    const {data} = get(profilesState);
+    return data;
+  },
+  set: ({set}, newValue) => {
+    set(friendsState, newValue);
+  },
+});
 
 export const getFriendsSelector = selector({
   key: `friends/get`,
   get: async ({get}) => {
-    const {data} = await apiGetProfiles();
+    //const {data} = await apiGetProfiles();
+    const {data} = get(friendsState);
     return data;
   },
   set: ({set}, newValue) => {
@@ -38,7 +51,8 @@ export const getChampionsSelector = selector({
 export const getLoLAccountSelector = selector({
   key: `lol_account/get`,
   get: async ({get}) => {
-    const {data} = await apiGetLoLAccount();
+    //const {data} = await apiGetLoLAccount();
+    const {data} = get(lol_accountState);
     return data;
   },
 });
