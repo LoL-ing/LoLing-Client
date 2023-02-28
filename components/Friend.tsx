@@ -59,7 +59,6 @@ export default function Friend(props: {
 
   const [goodOn, setGoodOn] = useState(false);
   const [badOn, setBadOn] = useState(false);
-
   return (
     <View>
       <Modal
@@ -192,7 +191,8 @@ export default function Friend(props: {
             <Pressable
               style={({pressed}) => ({
                 opacity: pressed ? 0.5 : 1,
-              })}>
+              })}
+              onPress={() => {}}>
               <Chat width={Layout.Width * 0.4} />
             </Pressable>
             <Pressable

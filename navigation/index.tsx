@@ -16,6 +16,17 @@ import MatchingScreen from '../screens/MatchingScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import SocialScreen from '../screens/SocialScreen';
 import MoreScreen from '../screens/MoreScreen';
+import ChatRoomScreen from '../screens/ChatroomScreen';
+import SignInScreen from '../screens/SignInScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import ToSScreen from '../screens/ToSScreen';
+import ProfileEditScreen from '../screens/ProfileEditScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import SelectMyLineChampScreen from '../screens/SelectMyLineChampScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import FriendRequestScreen from '../screens/FriendRequestScreen';
+import DeleteFriendScreen from '../screens/DeleteFriendScreen';
 
 import HomeIconSelected from '../assets/icons/svg/home-icon-selected.svg';
 import HomeIconUnselected from '../assets/icons/svg/home-icon-unselected.svg';
@@ -40,11 +51,66 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName={'Root'}>
+    <Stack.Navigator initialRouteName={'SignIn'}>
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
         options={{headerShown: false, animation: 'fade'}}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignInScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ToS"
+        component={ToSScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoomScreen}
+        options={{headerShown: false, animation: 'fade'}}
+      />
+      <Stack.Screen
+        name="ProfileEdit"
+        component={ProfileEditScreen}
+        options={{headerShown: false, animation: 'fade'}}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SelectMyLineChamp"
+        component={SelectMyLineChampScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{headerShown: false, animation: 'fade'}}
+      />
+      <Stack.Screen
+        name="FriendRequest"
+        component={FriendRequestScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DeleteFriend"
+        component={DeleteFriendScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
