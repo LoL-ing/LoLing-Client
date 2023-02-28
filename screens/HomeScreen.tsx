@@ -17,6 +17,7 @@ import {
 } from '../atoms/selector';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
+import Dimensions from '../constants/Dimensions';
 import HomeScreenFriendList from '../components/HomeScreenFriendList';
 // import getMyProfile from '../data/MyProfile';
 // import getFriends from '../data/Friends';
@@ -43,12 +44,12 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
   return (
     <View
       style={{
-        width: Layout.Width,
-        height: Layout.Height - 49,
+        width: Dimensions.widthPixel(360),
+        height: Dimensions.heightPixel(720) - 49,
         backgroundColor: Colors.backgroundBlack,
-        paddingTop: useSafeAreaInsets().top,
-        paddingBottom:
-          Layout.AndroidBottomBarHeight + 49 + useSafeAreaInsets().bottom,
+        //paddingTop: useSafeAreaInsets().top,
+        // paddingBottom:
+        //   Layout.AndroidBottomBarHeight + 49 + useSafeAreaInsets().bottom,
       }}>
       <ScrollView
         contentContainerStyle={styles.scrollViewContainer}
@@ -59,10 +60,9 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
         <View style={styles.profileContainer}>
           <View style={styles.profileSummaryContainer}>
             <Image style={styles.profileImg} source={MyProfile?.profileImg} />
-
             <View
               style={{
-                height: Layout.Height * 0.1,
+                height: Dimensions.widthPixel(65), //profileImg 크기에 맞춤
                 justifyContent: 'space-between',
               }}>
               <Text style={styles.profileNicknameText}>
@@ -71,7 +71,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               <Text style={styles.profileTierText}>{MyProfile?.tier}</Text>
               <View
                 style={{
-                  width: Layout.Width * 0.4,
+                  width: Dimensions.widthPixel(120),
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'space-between',
@@ -83,12 +83,13 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               </View>
             </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View
               style={{
-                width: Layout.Width * 0.48,
-                paddingVertical: Layout.Height * 0.025,
-                marginLeft: Layout.Width * 0.025,
+                //width: Layout.Width * 0.48,
+                paddingTop: Dimensions.heightPixel(15),
+                paddingBottom: Dimensions.heightPixel(24),
+                marginLeft: Dimensions.widthPixel(18),
               }}>
               <Text style={styles.profileSubtitleText}>CHAMPION</Text>
               <View
@@ -104,7 +105,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: Layout.Height * 0.01,
+                      marginTop: Dimensions.heightPixel(9),
                     }}>
                     <Text style={styles.profileWinRateText}>
                       {MyProfile?.champ1Winrate}
@@ -122,7 +123,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: Layout.Height * 0.01,
+                      marginTop: Dimensions.heightPixel(9),
                     }}>
                     <Text style={styles.profileWinRateText}>
                       {MyProfile?.champ2Winrate}
@@ -140,7 +141,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: Layout.Height * 0.01,
+                      marginTop: Dimensions.heightPixel(9),
                     }}>
                     <Text style={styles.profileWinRateText}>
                       {MyProfile?.champ3Winrate}
@@ -155,9 +156,9 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
 
             <View
               style={{
-                width: Layout.Width * 0.315,
-                paddingVertical: Layout.Height * 0.025,
-                marginLeft: Layout.Width * 0.05,
+                paddingTop: Dimensions.heightPixel(15),
+                paddingBottom: Dimensions.heightPixel(24),
+                marginRight: Dimensions.widthPixel(18),
               }}>
               <Text style={styles.profileSubtitleText}>POSITION</Text>
               <View
@@ -173,7 +174,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: Layout.Height * 0.01,
+                      marginTop: Dimensions.heightPixel(9),
                     }}>
                     <Text style={styles.profileWinRateText}>
                       {MyProfile?.line1Winrate}
@@ -183,7 +184,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                     </Text>
                   </View>
                 </View>
-                <View style={styles.winRateAndKDAContainer}>
+                <View style={[styles.winRateAndKDAContainer, {marginRight: 0}]}>
                   <Image
                     style={styles.positionImg}
                     source={require('../assets/images/lineJungle.png')}
@@ -191,7 +192,7 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginTop: Layout.Height * 0.01,
+                      marginTop: Dimensions.heightPixel(9),
                     }}>
                     <Text style={styles.profileWinRateText}>
                       {MyProfile?.line2Winrate}
@@ -319,6 +320,71 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     alignItems: 'center',
   },
+  //profile ----------------------------------------
+  profileContainer: {
+    marginTop: Dimensions.heightPixel(25),
+    width: Dimensions.widthPixel(312),
+    //height: Dimensions.heightPixel(213),
+    backgroundColor: Colors.backgroundNavy,
+    borderRadius: 10,
+    elevation: 6,
+  },
+  profileSummaryContainer: {
+    width: Dimensions.widthPixel(312),
+    //height: Dimensions.heightPixel(112),
+    paddingTop: Dimensions.heightPixel(20),
+    paddingBottom: Dimensions.heightPixel(26),
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.backgroundPurple,
+    borderRadius: 10,
+    elevation: 6,
+  },
+  profileImg: {
+    marginLeft: Dimensions.widthPixel(20),
+    marginRight: Dimensions.widthPixel(25),
+    width: Dimensions.widthPixel(65),
+    height: Dimensions.widthPixel(65),
+    borderRadius: Layout.Width * 0.1,
+  },
+  profileNicknameText: {
+    color: Colors.textWhite,
+    fontSize: Dimensions.fontPixel(18),
+    fontWeight: 'bold',
+  },
+  profileTierText: {
+    color: Colors.textWhite,
+    fontSize: Dimensions.fontPixel(14),
+  },
+  profileInfoText: {
+    color: Colors.textWhite,
+    fontSize: Dimensions.fontPixel(12),
+    opacity: 0.7,
+  },
+  profileSubtitleText: {
+    color: Colors.textGray,
+    fontSize: Dimensions.fontPixel(6),
+    marginBottom: Dimensions.heightPixel(6),
+  },
+  profileWinRateText: {
+    color: Colors.textFocusedPurple,
+    fontSize: Dimensions.fontPixel(9),
+  },
+  profileKDAText: {
+    color: Colors.textWhite,
+    fontSize: Dimensions.fontPixel(9),
+  },
+  winRateAndKDAContainer: {
+    width: Dimensions.widthPixel(43),
+    marginRight: Dimensions.widthPixel(10),
+    alignItems: 'center',
+  },
+  titleText: {
+    color: Colors.textWhite,
+    fontSize: Layout.FontScale * 16,
+    fontWeight: 'bold',
+  },
+  //matching----------------------------------------
   matchingContainer: {
     width: Layout.Width * 0.5,
     height: Layout.Height * 0.15,
@@ -338,79 +404,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundPurple,
     borderRadius: 30,
   },
-  profileContainer: {
-    marginTop: +Layout.Height * 0.02,
-    width: Layout.Width * 0.9,
-    height: Layout.Height * 0.32,
-    backgroundColor: Colors.backgroundNavy,
-    borderRadius: 20,
-  },
-  profileSummaryContainer: {
-    width: Layout.Width * 0.9,
-    height: Layout.Height * 0.18,
-    paddingHorizontal: Layout.Width * 0.025,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Colors.backgroundPurple,
-    borderRadius: 20,
-  },
-  profileImg: {
-    width: Layout.Width * 0.2,
-    height: Layout.Width * 0.2,
-    marginHorizontal: Layout.Width * 0.05,
-    borderRadius: Layout.Width * 0.1,
-  },
-  profileNicknameText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 20,
-    fontWeight: 'bold',
-  },
-  profileTierText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 16,
-    fontWeight: '900',
-  },
-  profileSubtitleText: {
-    color: Colors.textGray,
-    fontSize: Layout.FontScale * 6,
-    marginBottom: Layout.Height * 0.01,
-  },
-  profileWinRateText: {
-    color: Colors.textFocusedPurple,
-    fontSize: Layout.FontScale * 9,
-  },
-  profileKDAText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 9,
-  },
-  winRateAndKDAContainer: {
-    width: Layout.Width * 0.15,
-    alignItems: 'center',
-  },
+
   listContainer: {
     width: Layout.Width * 0.9,
     marginVertical: Layout.Height * 0.008,
     backgroundColor: Colors.backgroundBlack,
   },
-  titleText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 16,
-    fontWeight: 'bold',
-  },
-  profileInfoText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 12,
-    fontWeight: '600',
-    opacity: 0.7,
-  },
+
   matchingInfoContainer: {
     paddingVertical: Layout.Height * 0.013,
     flexDirection: 'row',
     alignItems: 'center',
   },
   championImg: {
-    width: Layout.Width * 0.09,
-    height: Layout.Height * 0.045,
+    width: Dimensions.widthPixel(34),
+    height: Dimensions.widthPixel(34),
     borderRadius: 50,
   },
   winRateText: {
@@ -422,8 +430,8 @@ const styles = StyleSheet.create({
     fontSize: Layout.FontScale * 12,
   },
   positionImg: {
-    width: Layout.Width * 0.09,
-    height: Layout.Height * 0.045,
+    width: Dimensions.widthPixel(34),
+    height: Dimensions.widthPixel(34),
   },
   userText: {
     width: Layout.Width * 0.2,
