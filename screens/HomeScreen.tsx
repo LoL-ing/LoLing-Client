@@ -19,12 +19,18 @@ import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import Dimensions from '../constants/Dimensions';
 import HomeScreenFriendList from '../components/HomeScreenFriendList';
+import CheckMessage from '../components/CheckMessage';
 // import getMyProfile from '../data/MyProfile';
 // import getFriends from '../data/Friends';
 import {RootTabScreenProps} from '../types';
 // import {accessTokenState} from '../atoms/atom';
 //import jwt_decode from 'jwt-decode';
 import Chevron_Right from '../assets/icons/svg/fi_chevron-right.svg';
+import Matching_User from '../assets/text_images/matching-user.svg';
+import Friend_List from '../assets/text_images/friend-list.svg';
+import Ontime_Hot_Post from '../assets/text_images/ontime-hot-post.svg';
+import Not_Restorable from '../assets/text_images/notRestorable.svg';
+import Friend_EditLine from '../assets/text_images/friendEditLine.svg';
 
 //const MyProfile = getMyProfile();
 //const friends = getFriends();
@@ -51,6 +57,24 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
         // paddingBottom:
         //   Layout.AndroidBottomBarHeight + 49 + useSafeAreaInsets().bottom,
       }}>
+      <CheckMessage
+      onPress={() => {
+        return;
+      }}
+        mainMessage={
+          <Friend_EditLine
+            width={Dimensions.widthPixel(211)}
+            height={Dimensions.heightPixel(16)}
+          />
+        }
+        subMessage={
+          <Not_Restorable
+            width={Dimensions.widthPixel(121)}
+            height={Dimensions.heightPixel(12)}
+          />
+        }
+      />
+
       <ScrollView
         contentContainerStyle={styles.scrollViewContainer}
         alwaysBounceHorizontal={false}
@@ -213,9 +237,13 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginVertical: Layout.Height * 0.03,
+              marginTop: Dimensions.heightPixel(34),
+              marginBottom: Dimensions.heightPixel(22),
             }}>
-            <Text style={styles.titleText}>매칭 가능한 유저들</Text>
+            <Matching_User
+              width={Dimensions.widthPixel(81)}
+              height={Dimensions.widthPixel(12)}
+            />
             <Pressable>
               <Chevron_Right />
             </Pressable>
@@ -277,9 +305,12 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginVertical: Layout.Height * 0.03,
+              marginVertical: Dimensions.heightPixel(30),
             }}>
-            <Text style={styles.titleText}>친구 목록</Text>
+            <Friend_List
+              width={Dimensions.widthPixel(45)}
+              height={Dimensions.widthPixel(12)}
+            />
             <Pressable onPress={() => navigation.navigate('Social')}>
               <Chevron_Right />
             </Pressable>
@@ -303,9 +334,12 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginVertical: Layout.Height * 0.03,
+              marginVertical: Dimensions.heightPixel(21),
             }}>
-            <Text style={styles.titleText}>실시간 인기 게시물</Text>
+            <Ontime_Hot_Post
+              width={Dimensions.widthPixel(88)}
+              height={Dimensions.widthPixel(12)}
+            />
             <Pressable>
               <Chevron_Right />
             </Pressable>
@@ -344,7 +378,7 @@ const styles = StyleSheet.create({
     marginLeft: Dimensions.widthPixel(20),
     marginRight: Dimensions.widthPixel(25),
     width: Dimensions.widthPixel(65),
-    height: Dimensions.widthPixel(65),
+    height: Dimensions.heightPixel(65),
     borderRadius: Layout.Width * 0.1,
   },
   profileNicknameText: {
@@ -379,24 +413,19 @@ const styles = StyleSheet.create({
     marginRight: Dimensions.widthPixel(10),
     alignItems: 'center',
   },
-  titleText: {
-    color: Colors.textWhite,
-    fontSize: Layout.FontScale * 16,
-    fontWeight: 'bold',
-  },
   //matching----------------------------------------
   matchingContainer: {
-    width: Layout.Width * 0.5,
-    height: Layout.Height * 0.15,
-    marginRight: Layout.Width * 0.05,
+    width: Dimensions.widthPixel(180),
+    height: Dimensions.widthPixel(94),
+    marginRight: Dimensions.widthPixel(15),
     backgroundColor: Colors.backgroundNavy,
     borderRadius: 30,
   },
   userInfoContainer: {
-    width: Layout.Width * 0.45,
-    height: Layout.Height * 0.04,
-    marginVertical: Layout.Height * 0.013,
-    paddingHorizontal: Layout.Width * 0.03,
+    width: Dimensions.widthPixel(165),
+    height: Dimensions.heightPixel(28),
+    marginVertical: Dimensions.heightPixel(10),
+    paddingHorizontal: Dimensions.widthPixel(8),
     flexDirection: 'row',
     alignSelf: 'center',
     justifyContent: 'space-between',
@@ -406,41 +435,43 @@ const styles = StyleSheet.create({
   },
 
   listContainer: {
-    width: Layout.Width * 0.9,
-    marginVertical: Layout.Height * 0.008,
+    width: Dimensions.widthPixel(324),
+    marginVertical: Dimensions.heightPixel(5),
     backgroundColor: Colors.backgroundBlack,
   },
 
   matchingInfoContainer: {
-    paddingVertical: Layout.Height * 0.013,
+    paddingVertical: Dimensions.heightPixel(5),
     flexDirection: 'row',
     alignItems: 'center',
   },
   championImg: {
     width: Dimensions.widthPixel(34),
-    height: Dimensions.widthPixel(34),
+    height: Dimensions.heightPixel(34),
     borderRadius: 50,
   },
   winRateText: {
     color: Colors.textFocusedPurple,
-    fontSize: Layout.FontScale * 12,
+    fontSize: Dimensions.fontPixel(12),
   },
   KDAText: {
     color: Colors.textGray,
-    fontSize: Layout.FontScale * 12,
+    fontSize: Dimensions.fontPixel(12),
   },
   positionImg: {
-    width: Dimensions.widthPixel(34),
-    height: Dimensions.widthPixel(34),
+    width: Dimensions.widthPixel(36),
+    height: Dimensions.heightPixel(34),
   },
   userText: {
-    width: Layout.Width * 0.2,
+    width: Dimensions.widthPixel(74),
+    height: Dimensions.heightPixel(15),
     color: Colors.textWhite,
-    fontSize: Layout.FontScale * 10,
+    fontSize: Dimensions.fontPixel(10),
+    fontWeight: 'bold',
   },
   rankText: {
     color: Colors.textWhite,
-    fontSize: Layout.FontScale * 12,
+    fontSize: Dimensions.fontPixel(12),
     fontWeight: 'bold',
   },
 });
