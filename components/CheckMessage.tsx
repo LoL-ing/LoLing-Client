@@ -4,10 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Image, 
+  Image,
   ImageSourcePropType,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import Dimensions from '../constants/Dimensions';
@@ -21,41 +20,39 @@ export default function CheckMessage(props: {
   subMessage: JSX.Element;
   onPress: any;
 }) {
-  const navigation = useNavigation();
   return (
     <View style={styles.editContainer}>
-      <View
-        style={styles.alertcircleContainer}>
+      <View style={styles.alertcircleContainer}>
         <AlertCircle
           width={Dimensions.widthPixel(28)}
           height={Dimensions.heightPixel(28)}
+          style={{color: 'gray'}}
         />
       </View>
-      <View
-        style={styles.messageComtainer}>
+      <View style={styles.messageComtainer}>
         {props.mainMessage}
         {props.subMessage}
       </View>
       <View style={{flexDirection: 'row'}}>
-      <Pressable
-      onPress={props.onPress}
-      style={({pressed}) => ({
-        opacity: pressed ? 0.5 : 1,
-      })}>
-        <No
-          width={Dimensions.widthPixel(126)}
-          height={Dimensions.heightPixel(32)}
-        />
-      </Pressable>
-      <Pressable
-      onPress={props.onPress}
-      style={({pressed}) => ({
-        opacity: pressed ? 0.5 : 1,
-      })}>
-        <Yes
-          width={Dimensions.widthPixel(126)}
-          height={Dimensions.heightPixel(32)}
-        />
+        <Pressable
+          onPress={props.onPress}
+          style={({pressed}) => ({
+            opacity: pressed ? 0.5 : 1,
+          })}>
+          <No
+            width={Dimensions.widthPixel(126)}
+            height={Dimensions.heightPixel(32)}
+          />
+        </Pressable>
+        <Pressable
+          onPress={props.onPress}
+          style={({pressed}) => ({
+            opacity: pressed ? 0.5 : 1,
+          })}>
+          <Yes
+            width={Dimensions.widthPixel(126)}
+            height={Dimensions.heightPixel(32)}
+          />
         </Pressable>
       </View>
     </View>

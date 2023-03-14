@@ -17,14 +17,17 @@ import {apiGetAccessToken} from '../api/main';
 import Colors from '../constants/Colors';
 import Styles from '../constants/Styles';
 import Dimensions from '../constants/Dimensions';
+import CustomTextInput from '../components/CustomTextInput';
 import {RootStackScreenProps} from '../types';
 //import { AsyncStorage } from 'react-native';
 import FindIdPassword from '../assets/text_images/findIdPassword.svg';
 import GoToSignUp from '../assets/text_images/goToSignUp.svg';
 import LoginButton from '../assets/text_images/loginButton.svg';
+import LongButton from '../components/LongButton';
 import KaKao from '../assets/text_images/kakaoLogin.svg';
 import Naver from '../assets/text_images/naverLogin.svg';
 import Google from '../assets/text_images/googleLogin.svg';
+import ID_Main from '../assets/text_images/ID_Main';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export default function SignInScreen({
@@ -56,7 +59,7 @@ export default function SignInScreen({
         <View style={{backgroundColor: Colors.backgroundBlack}}>
           <View style={styles.signinContainer}>
             <View style={styles.signinTextInputContainer}>
-              <TextInput
+              {/* <TextInput
                 style={[
                   styles.textInput,
                   isIDFocused
@@ -79,6 +82,16 @@ export default function SignInScreen({
                 onSubmitEditing={() => passwordField.current?.focus}
                 blurOnSubmit={false}
                 clearButtonMode="while-editing"
+              /> */}
+              <CustomTextInput
+                Main={undefined}
+                Holder="아이디 / 이메일을 입력하세요."
+                content={email}
+                setContent={setEmail}
+                returnType="next"
+                Red={signIn}
+                referred={undefined}
+                onSubmitEditingFunc={() => passwordField.current?.focus}
               />
               <TextInput
                 style={[
@@ -137,7 +150,6 @@ export default function SignInScreen({
                 <GoToSignUp width={Dimensions.widthPixel(114)} />
               </Pressable>
             </View>
-
             <Pressable
               style={({pressed}) => ({
                 opacity: pressed ? 0.5 : 1,
@@ -145,23 +157,23 @@ export default function SignInScreen({
                 marginTop: Dimensions.heightPixel(30),
                 marginBottom: Dimensions.heightPixel(43),
               })}
-              //   백엔드 없어서 일단 주석처리
-              //   onPress={async function () {
-              //     const response = await apiGetAccessToken({
-              //       email: email,
-              //       password: password,
-              //     });
-
-              //     if (response.data) {
-              //       // setToken(response.data);
-
-              //       /* 로컬 스토리지에 토큰을 저장함 */
-              //       await AsyncStorage.setItem('token', response.data);
-
-              //       navigation.navigate('Root');
-              //     }
-              //   }}
               onPress={() => {
+                //   백엔드 없어서 일단 주석처리
+                //   onPress={async function () {
+                //     const response = await apiGetAccessToken({
+                //       email: email,
+                //       password: password,
+                //     });
+
+                //     if (response.data) {
+                //       // setToken(response.data);
+
+                //       /* 로컬 스토리지에 토큰을 저장함 */
+                //       await AsyncStorage.setItem('token', response.data);
+
+                //       navigation.navigate('Root');
+                //     }
+                //   }}
                 navigation.navigate('Root');
               }}>
               <LoginButton
@@ -169,6 +181,28 @@ export default function SignInScreen({
                 height={Dimensions.widthPixel(48)}
               />
             </Pressable>
+            {/* <LongButton
+              onPress={() => {
+                navigation.navigate('Root');
+              }}
+              width={Dimensions.widthPixel(312)}
+              height={Dimensions.heightPixel(48)}
+              backgroundColor={Colors.backgroundPurple}
+              content={
+                <Text
+                  style={{
+                    color: Colors.textWhite,
+                    fontWeight: 'bold',
+                    fontSize: Dimensions.fontPixel(14),
+                  }}>
+                  LOG IN
+                </Text>
+              }
+              customStyle={{
+                marginTop: Dimensions.heightPixel(30),
+                marginBottom: Dimensions.heightPixel(43),
+              }}
+            /> */}
           </View>
 
           <Pressable

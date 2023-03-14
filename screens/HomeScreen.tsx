@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import {
   Pressable,
   ScrollView,
@@ -20,6 +21,7 @@ import Layout from '../constants/Layout';
 import Dimensions from '../constants/Dimensions';
 import HomeScreenFriendList from '../components/HomeScreenFriendList';
 import CheckMessage from '../components/CheckMessage';
+import CustomTextInput from '../components/CustomTextInput';
 // import getMyProfile from '../data/MyProfile';
 // import getFriends from '../data/Friends';
 import {RootTabScreenProps} from '../types';
@@ -31,7 +33,9 @@ import Friend_List from '../assets/text_images/friend-list.svg';
 import Ontime_Hot_Post from '../assets/text_images/ontime-hot-post.svg';
 import Not_Restorable from '../assets/text_images/notRestorable.svg';
 import Friend_EditLine from '../assets/text_images/friendEditLine.svg';
-
+import ID_Main from '../assets/text_images/ID_Main';
+import LongButton from '../components/LongButton';
+import SearchBar from '../components/SearchBar';
 //const MyProfile = getMyProfile();
 //const friends = getFriends();
 //const MatchableUsers = getFriends();
@@ -39,7 +43,8 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
   const MyProfile = useRecoilValue(getMyProfileSelector)[0];
   const friends = useRecoilValue(getFriendsSelector);
   const MatchableUsers = useRecoilValue(getLoLAccountSelector);
-
+  const [textInputTest, setTextInputTest] = useState('');
+  const [searchBarTextInput, setSearchBarTextInput] = useState('');
   //  여기에서 토큰 -> lol_name 추출 해서 넣기
   // const myJWT = useRecoilValue(accessTokenState);
 
@@ -57,10 +62,53 @@ export default function HomeScreen({navigation}: RootTabScreenProps<'Home'>) {
         // paddingBottom:
         //   Layout.AndroidBottomBarHeight + 49 + useSafeAreaInsets().bottom,
       }}>
+      <SearchBar
+        firstMessage="게시판 검색하기"
+        content={searchBarTextInput}
+        setContent={setSearchBarTextInput}
+      />
+      <LongButton
+        onPress={() => {
+          navigation.navigate('Matching');
+        }}
+        width={Dimensions.widthPixel(312)}
+        height={Dimensions.heightPixel(48)}
+        backgroundColor={Colors.backgroundPurple}
+        content={
+          <Text
+            style={{
+              color: Colors.textWhite,
+              fontWeight: 'bold',
+              fontSize: Dimensions.fontPixel(14),
+            }}>
+            LOG IN
+          </Text>
+        }
+        customStyle={{
+          marginTop: Dimensions.heightPixel(30),
+          marginBottom: Dimensions.heightPixel(43),
+        }}
+      />
+      <CustomTextInput
+        Main={
+          <ID_Main
+            width={Dimensions.widthPixel(39)}
+            height={Dimensions.heightPixel(16)}
+          />
+        }
+        Holder="아이디를 입력해주세요."
+        content={textInputTest}
+        setContent={setTextInputTest}
+        returnType="done"
+        onPress={() => {
+          return;
+        }}
+        Red={true}
+      />
       <CheckMessage
-      onPress={() => {
-        return;
-      }}
+        onPress={() => {
+          return;
+        }}
         mainMessage={
           <Friend_EditLine
             width={Dimensions.widthPixel(211)}
