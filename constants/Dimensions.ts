@@ -29,13 +29,10 @@ const physicalHeight = logicalHeight * PixelRatio.get();
 //for width  pixel
 const widthPixel = (size: number) => {
   return normalize(size, 'width');
-
-  // return size * physicalWidth;
 };
 //for height  pixel
 const heightPixel = (size: number) => {
   return normalize(size, 'height');
-//   return size * physicalHeight;
 };
 //for font pixel
 const hPixel = heightPixel(10);
