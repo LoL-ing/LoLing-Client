@@ -20,13 +20,22 @@ function normalize(size: number, based = 'width') {
   const newSize = based === 'height' ? size * height : size * width;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 }
+
+const logicalWidth = Dimensions.get('window').width;
+
+const logicalHeight = Dimensions.get('window').height;
+const physicalWidth = logicalWidth * PixelRatio.get();
+const physicalHeight = logicalHeight * PixelRatio.get();
 //for width  pixel
 const widthPixel = (size: number) => {
   return normalize(size, 'width');
+
+  // return size * physicalWidth;
 };
 //for height  pixel
 const heightPixel = (size: number) => {
   return normalize(size, 'height');
+//   return size * physicalHeight;
 };
 //for font pixel
 const hPixel = heightPixel(10);

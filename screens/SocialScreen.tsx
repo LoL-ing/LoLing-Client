@@ -39,7 +39,7 @@ import FriendRequestText from '../assets/text_images/friendRequestText.svg';
 import FriendRequestExit from '../assets/icons/svg/profilecard-exit.svg';
 import DeleteNo from '../assets/icons/svg/delete-no.svg';
 import DeleteYes from '../assets/icons/svg/delete-yes.svg';
-import {getFriendsSelector} from '../atoms/selector';
+import {getFriendsSelector} from '../models/selector';
 import {useRecoilValue} from 'recoil';
 
 // const originFriends = getFriends();

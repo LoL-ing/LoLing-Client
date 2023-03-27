@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {useRecoilState} from 'recoil';
 import {useRecoilValue} from 'recoil';
-import {accessTokenState} from '../atoms/atom';
+import {accessTokenState} from '../models/atom';
 import {apiGetAccessToken} from '../api/main';
 import Colors from '../constants/Colors';
 import Styles from '../constants/Styles';

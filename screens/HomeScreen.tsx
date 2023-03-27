@@ -15,7 +15,7 @@ import {
   getFriendsSelector,
   getLoLAccountSelector,
   getMyProfileSelector,
-} from '../atoms/selector';
+} from '../models/selector';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import Dimensions from '../constants/Dimensions';
@@ -25,7 +25,7 @@ import CustomTextInput from '../components/CustomTextInput';
 // import getMyProfile from '../data/MyProfile';
 // import getFriends from '../data/Friends';
 import {RootTabScreenProps} from '../types';
-// import {accessTokenState} from '../atoms/atom';
+// import {accessTokenState} from '../models/atom';
 //import jwt_decode from 'jwt-decode';
 import Chevron_Right from '../assets/icons/svg/fi_chevron-right.svg';
 import Matching_User from '../assets/text_images/matching-user.svg';
