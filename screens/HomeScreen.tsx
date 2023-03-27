@@ -15,7 +15,7 @@ import {
   getFriendsSelector,
   getLoLAccountSelector,
   getMyProfileSelector,
-} from '../atoms/selector';
+} from '../models/selector';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import Dimensions from '../constants/Dimensions';

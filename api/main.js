@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {API_URL} from '../config';
 import {useRecoilState} from 'recoil';
-import {profilesState} from '../atoms/atom';
+import {profilesState} from '../models/atom';
 import baseAPI from './base.js';
-import {accessTokenState} from '../atoms/atom';
+import {accessTokenState} from '../models/atom';
 import {useRecoilValue} from 'recoil';
 
 export function apiGetFriends() {
