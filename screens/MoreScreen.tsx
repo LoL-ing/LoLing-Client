@@ -202,7 +202,7 @@ export default function MoreScreen({navigation}: RootTabScreenProps<'More'>) {
             width: Layout.Width,
             height: HEADER,
 
-            height: offset.interpolate({
+            translateX: offset.interpolate({
               inputRange: [
                 0,
                 // (HEADER - AFTERHEADER) * a,
@@ -500,17 +500,20 @@ export default function MoreScreen({navigation}: RootTabScreenProps<'More'>) {
             <Menu
               title="앱 가이드"
               destination="ToS"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
 
             <Menu
               title="약관 및 정책"
               destination="Welcome"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
 
             <Menu
               title="현재 버전 1.0.0"
               destination="SelectMyLineChamp"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
           </View>
           <View style={styles.faqBox}>
             <View style={styles.settingfaqText}>
@@ -521,11 +524,13 @@ export default function MoreScreen({navigation}: RootTabScreenProps<'More'>) {
             <Menu
               title="고객센터"
               destination="SignIn"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
             <Menu
               title="FAQ"
               destination="ChatRoom"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
           </View>
           <View style={styles.faqBox}>
             <View style={styles.settingfaqText}>
@@ -536,11 +541,13 @@ export default function MoreScreen({navigation}: RootTabScreenProps<'More'>) {
             <Menu
               title="고객센터"
               destination="SignIn"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
             <Menu
               title="FAQ"
               destination="ChatRoom"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
           </View>
           <View style={styles.faqBox}>
             <View style={styles.settingfaqText}>
@@ -551,11 +558,13 @@ export default function MoreScreen({navigation}: RootTabScreenProps<'More'>) {
             <Menu
               title="고객센터"
               destination="SignIn"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
             <Menu
               title="FAQ"
               destination="ChatRoom"
-              onPressAnimation={onPressAnimation}></Menu>
+              onPressAnimation={onPressAnimation}
+              onPressAnimationReverse={onPressAnimationReverse}></Menu>
           </View>
         </Animated.View>
       </Animated.ScrollView>

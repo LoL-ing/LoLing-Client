@@ -37,7 +37,7 @@ export default function SignInScreen({
   const [password, setPassword] = useState('');
   const [isIDFocused, setisIDFocused] = useState(false);
   const [isPWFocused, setisPWFocused] = useState(false);
-  const [signIn, setSignIn] = useState(false);
+  const [signIn, setSignIn] = useState(true);
   const passwordField = useRef<TextInput>(null);
 
   // const [token, setToken] = useRecoilState(accessTokenState);
@@ -83,40 +83,35 @@ export default function SignInScreen({
                 blurOnSubmit={false}
                 clearButtonMode="while-editing"
               /> */}
+
               <CustomTextInput
-                Main={undefined}
-                Holder="아이디 / 이메일을 입력하세요."
+                main={undefined}
+                textHolder="아이디 / 이메일을 입력하세요."
                 content={email}
                 setContent={setEmail}
                 returnType="next"
-                Red={signIn}
-                referred={undefined}
-                onSubmitEditingFunc={() => passwordField.current?.focus}
-              />
-              <TextInput
-                style={[
-                  styles.textInput,
-                  signIn
-                    ? isPWFocused
-                      ? styles.focusedTextInput
-                      : styles.unfocusedTextInput
-                    : styles.signinFailedTextInput,
-                ]}
-                placeholder="비밀번호를 입력하세요"
-                placeholderTextColor={
-                  isPWFocused ? Colors.textWhite : Colors.textGray
-                }
-                secureTextEntry={true}
-                onFocus={() => {
-                  setisPWFocused(true);
-                }}
-                onBlur={() => {
-                  setisPWFocused(false);
-                }}
-                onChangeText={text => setPassword(text)}
-                value={password}
+                correctInput={signIn}
+                redOrNot={false}
+                //referred={undefined}
+                //onSubmitEditingFunc={() => passwordField.current?.focus}
+                secure={false}
                 ref={passwordField}
-                clearButtonMode="while-editing"
+              />
+              <CustomTextInput
+                main={undefined}
+                textHolder="비밀번호를 입력하세요"
+                content={password}
+                setContent={setPassword}
+                returnType="done"
+                correctInput={signIn}
+                redOrNot={true}
+                //red가 될필요가없는것은 true
+                //red가 될필요가있는것은 signIn
+                //false일때 red적용
+                //referred={passwordField}
+                //onSubmitEditingFunc={undefined}
+                secure={true}
+                ref={passwordField}
               />
             </View>
             <View
@@ -174,7 +169,12 @@ export default function SignInScreen({
                 //       navigation.navigate('Root');
                 //     }
                 //   }}
-                navigation.navigate('Root');
+                if (password === '1234') {
+                  setSignIn(true);
+                } else {
+                  setSignIn(false);
+                }
+                //navigation.navigate('Root');
               }}>
               <LoginButton
                 width={Dimensions.widthPixel(312)}

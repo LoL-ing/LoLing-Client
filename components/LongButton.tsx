@@ -9,10 +9,10 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
+import {GestureResponderEvent} from 'react-native';
 
 export default function LongButton(props: {
-  //onPress: (event: GestureResponderEvent) => void;
-  onPress: any;
+  onPress: (event: GestureResponderEvent) => void;
   width: number;
   height: number;
   backgroundColor: string;
