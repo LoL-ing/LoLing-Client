@@ -12,19 +12,22 @@ import {
 } from 'react-native';
 import {useRecoilState} from 'recoil';
 import {useRecoilValue} from 'recoil';
-import {accessTokenState} from '../atoms/atom';
+import {accessTokenState} from '../models/atom';
 import {apiGetAccessToken} from '../api/main';
 import Colors from '../constants/Colors';
 import Styles from '../constants/Styles';
-import Layout from '../constants/Layout';
+import Dimensions from '../constants/Dimensions';
+import CustomTextInput from '../components/CustomTextInput';
 import {RootStackScreenProps} from '../types';
 //import { AsyncStorage } from 'react-native';
 import FindIdPassword from '../assets/text_images/findIdPassword.svg';
 import GoToSignUp from '../assets/text_images/goToSignUp.svg';
 import LoginButton from '../assets/text_images/loginButton.svg';
+import LongButton from '../components/LongButton';
 import KaKao from '../assets/text_images/kakaoLogin.svg';
 import Naver from '../assets/text_images/naverLogin.svg';
 import Google from '../assets/text_images/googleLogin.svg';
+import ID_Main from '../assets/text_images/ID_Main';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export default function SignInScreen({
@@ -44,17 +47,19 @@ export default function SignInScreen({
       {/* <View style={Styles.fullscreen}> */}
       <View
         style={{
-          width: Layout.Width,
-          height: Layout.Height,
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          width: Dimensions.widthPixel(360),
+          height: Dimensions.heightPixel(720),
           backgroundColor: Colors.backgroundBlack,
-          paddingTop: useSafeAreaInsets().top,
-          paddingBottom:
-            Layout.AndroidBottomBarHeight + useSafeAreaInsets().bottom,
+          paddingTop: 0, //useSafeAreaInsets().top,
+          paddingBottom: 0, //useSafeAreaInsets().bottom,
         }}>
         <View style={{backgroundColor: Colors.backgroundBlack}}>
           <View style={styles.signinContainer}>
             <View style={styles.signinTextInputContainer}>
-              <TextInput
+              {/* <TextInput
                 style={[
                   styles.textInput,
                   isIDFocused
@@ -77,31 +82,36 @@ export default function SignInScreen({
                 onSubmitEditing={() => passwordField.current?.focus}
                 blurOnSubmit={false}
                 clearButtonMode="while-editing"
-              />
-              <TextInput
-                style={[
-                  styles.textInput,
-                  signIn
-                    ? isPWFocused
-                      ? styles.focusedTextInput
-                      : styles.unfocusedTextInput
-                    : styles.signinFailedTextInput,
-                ]}
-                placeholder="비밀번호를 입력하세요"
-                placeholderTextColor={
-                  isPWFocused ? Colors.textWhite : Colors.textGray
-                }
-                secureTextEntry={true}
-                onFocus={() => {
-                  setisPWFocused(true);
-                }}
-                onBlur={() => {
-                  setisPWFocused(false);
-                }}
-                onChangeText={text => setPassword(text)}
-                value={password}
+              /> */}
+
+              <CustomTextInput
+                main={undefined}
+                textHolder="아이디 / 이메일을 입력하세요."
+                content={email}
+                setContent={setEmail}
+                returnType="next"
+                correctInput={signIn}
+                redOrNot={false}
+                //referred={undefined}
+                //onSubmitEditingFunc={() => passwordField.current?.focus}
+                secure={false}
                 ref={passwordField}
-                clearButtonMode="while-editing"
+              />
+              <CustomTextInput
+                main={undefined}
+                textHolder="비밀번호를 입력하세요"
+                content={password}
+                setContent={setPassword}
+                returnType="done"
+                correctInput={signIn}
+                redOrNot={true}
+                //red가 될필요가없는것은 true
+                //red가 될필요가있는것은 signIn
+                //false일때 red적용
+                //referred={passwordField}
+                //onSubmitEditingFunc={undefined}
+                secure={true}
+                ref={passwordField}
               />
             </View>
             <View
@@ -109,8 +119,8 @@ export default function SignInScreen({
               <Image
                 source={require('../assets/images/exclamation-circle.png')}
                 style={{
-                  width: Layout.Width * 0.1,
-                  height: Layout.Width * 0.1,
+                  width: Dimensions.widthPixel(30),
+                  height: Dimensions.widthPixel(30),
                 }}
               />
               <Text style={styles.signinFailedText}>
@@ -124,7 +134,7 @@ export default function SignInScreen({
                   opacity: pressed ? 0.5 : 1,
                   alignItems: 'center',
                 })}>
-                <FindIdPassword width={Layout.Width * 1} />
+                <FindIdPassword width={Dimensions.widthPixel(114)} />
               </Pressable>
               <Pressable
                 style={({pressed}) => ({
@@ -132,47 +142,91 @@ export default function SignInScreen({
                   alignItems: 'center',
                 })}
                 onPress={() => navigation.navigate('ToS')}>
-                <View style={{marginRight: Layout.Width * 0.13}}>
-                  <GoToSignUp />
-                </View>
+                <GoToSignUp width={Dimensions.widthPixel(114)} />
               </Pressable>
             </View>
-
             <Pressable
               style={({pressed}) => ({
                 opacity: pressed ? 0.5 : 1,
-                paddingVertical: 5,
                 alignItems: 'center',
+                marginTop: Dimensions.heightPixel(30),
+                marginBottom: Dimensions.heightPixel(43),
               })}
-              //   백엔드 없어서 일단 주석처리
-              //   onPress={async function () {
-              //     const response = await apiGetAccessToken({
-              //       email: email,
-              //       password: password,
-              //     });
+              onPress={() => {
+                //   백엔드 없어서 일단 주석처리
+                //   onPress={async function () {
+                //     const response = await apiGetAccessToken({
+                //       email: email,
+                //       password: password,
+                //     });
 
-              //     if (response.data) {
-              //       // setToken(response.data);
+                //     if (response.data) {
+                //       // setToken(response.data);
 
-              //       /* 로컬 스토리지에 토큰을 저장함 */
-              //       await AsyncStorage.setItem('token', response.data);
+                //       /* 로컬 스토리지에 토큰을 저장함 */
+                //       await AsyncStorage.setItem('token', response.data);
 
-              //       navigation.navigate('Root');
-              //     }
-              //   }}
+                //       navigation.navigate('Root');
+                //     }
+                //   }}
+                if (password === '1234') {
+                  setSignIn(true);
+                } else {
+                  setSignIn(false);
+                }
+                //navigation.navigate('Root');
+              }}>
+              <LoginButton
+                width={Dimensions.widthPixel(312)}
+                height={Dimensions.widthPixel(48)}
+              />
+            </Pressable>
+            {/* <LongButton
               onPress={() => {
                 navigation.navigate('Root');
-              }}>
-              <LoginButton />
-            </Pressable>
+              }}
+              width={Dimensions.widthPixel(312)}
+              height={Dimensions.heightPixel(48)}
+              backgroundColor={Colors.backgroundPurple}
+              content={
+                <Text
+                  style={{
+                    color: Colors.textWhite,
+                    fontWeight: 'bold',
+                    fontSize: Dimensions.fontPixel(14),
+                  }}>
+                  LOG IN
+                </Text>
+              }
+              customStyle={{
+                marginTop: Dimensions.heightPixel(30),
+                marginBottom: Dimensions.heightPixel(43),
+              }}
+            /> */}
           </View>
 
           <Pressable
             style={({pressed}) => ({
               opacity: pressed ? 0.5 : 1,
               alignSelf: 'center',
+              marginBottom: Dimensions.heightPixel(10),
             })}>
-            <KaKao />
+            <KaKao
+              width={Dimensions.widthPixel(312)}
+              height={Dimensions.widthPixel(48)}
+            />
+          </Pressable>
+
+          <Pressable
+            style={({pressed}) => ({
+              opacity: pressed ? 0.5 : 1,
+              alignSelf: 'center',
+              marginBottom: Dimensions.heightPixel(10),
+            })}>
+            <Naver
+              width={Dimensions.widthPixel(312)}
+              height={Dimensions.widthPixel(48)}
+            />
           </Pressable>
 
           <Pressable
@@ -180,15 +234,10 @@ export default function SignInScreen({
               opacity: pressed ? 0.5 : 1,
               alignSelf: 'center',
             })}>
-            <Naver />
-          </Pressable>
-
-          <Pressable
-            style={({pressed}) => ({
-              opacity: pressed ? 0.5 : 1,
-              alignSelf: 'center',
-            })}>
-            <Google />
+            <Google
+              width={Dimensions.widthPixel(312)}
+              height={Dimensions.widthPixel(48)}
+            />
           </Pressable>
         </View>
       </View>
@@ -198,18 +247,19 @@ export default function SignInScreen({
 
 const styles = StyleSheet.create({
   signinContainer: {
-    marginTop: Layout.Height * 0.15,
+    width: Dimensions.widthPixel(360),
+    alignItems: 'center',
+    marginTop: Dimensions.heightPixel(162),
     backgroundColor: Colors.backgroundBlack,
   },
   textInput: {
+    width: Dimensions.widthPixel(312),
     color: Colors.textWhite,
-    fontSize: Layout.FontScale * 18,
+    fontSize: Dimensions.fontPixel(14),
     fontWeight: 'bold',
-    padding: Layout.FontScale * 15,
+    //padding: Dimensions.fontPixel(15),
   },
   signinTextInputContainer: {
-    padding: 20,
-    paddingBottom: 10,
     backgroundColor: Colors.backgroundBlack,
   },
   focusedTextInput: {
@@ -222,24 +272,22 @@ const styles = StyleSheet.create({
   },
   signinFailedTextInput: {
     borderBottomColor: Colors.textRed,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
   },
   signinFailedContainer: {
-    paddingLeft: Layout.Width * 0.05,
-    marginBottom: 5,
+    width: Dimensions.widthPixel(312),
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.backgroundBlack,
   },
   signinFailedText: {
     color: Colors.textRed,
-    fontSize: Layout.FontScale * 15,
-    marginLeft: 5,
+    fontSize: Dimensions.fontPixel(12),
   },
   twoButtonContainer: {
+    width: Dimensions.widthPixel(312),
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: Colors.backgroundBlack,
   },
 });

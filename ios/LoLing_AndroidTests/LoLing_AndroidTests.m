@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface LoLing_AndroidTests : XCTestCase
+@interface lolingclientTests : XCTestCase
 
 @end
 
-@implementation LoLing_AndroidTests
+@implementation lolingclientTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

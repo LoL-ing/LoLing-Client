@@ -15,7 +15,7 @@ import {
   Alert,
 } from 'react-native';
 import {useRecoilValue} from 'recoil';
-import {getChampionsSelector} from '../atoms/selector';
+import {getChampionsSelector} from '../models/selector';
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
 import Styles from '../constants/Styles';
