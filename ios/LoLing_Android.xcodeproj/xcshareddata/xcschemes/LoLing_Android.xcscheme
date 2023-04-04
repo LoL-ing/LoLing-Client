@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "LoLing_Android.app"
-               BlueprintName = "LoLing_Android"
-               ReferencedContainer = "container:LoLing_Android.xcodeproj">
+               BuildableName = "lolingclient.app"
+               BlueprintName = "lolingclient"
+               ReferencedContainer = "container:lolingclient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "LoLing_AndroidTests.xctest"
-               BlueprintName = "LoLing_AndroidTests"
-               ReferencedContainer = "container:LoLing_Android.xcodeproj">
+               BuildableName = "lolingclientTests.xctest"
+               BlueprintName = "lolingclientTests"
+               ReferencedContainer = "container:lolingclient.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LoLing_Android.app"
-            BlueprintName = "LoLing_Android"
-            ReferencedContainer = "container:LoLing_Android.xcodeproj">
+            BuildableName = "lolingclient.app"
+            BlueprintName = "lolingclient"
+            ReferencedContainer = "container:lolingclient.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LoLing_Android.app"
-            BlueprintName = "LoLing_Android"
-            ReferencedContainer = "container:LoLing_Android.xcodeproj">
+            BuildableName = "lolingclient.app"
+            BlueprintName = "lolingclient"
+            ReferencedContainer = "container:lolingclient.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

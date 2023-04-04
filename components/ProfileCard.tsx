@@ -8,9 +8,9 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
-
 import MatchingPosition from '../assets/text_images/matching-position.svg';
 import MatchingChampion from '../assets/text_images/matching-champion.svg';
 import MatchingToUser from '../assets/text_images/matching-toUser.svg';

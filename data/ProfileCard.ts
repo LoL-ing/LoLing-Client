@@ -4,7 +4,7 @@ const ProfileCard = [
   {
     lolingId: 'Soodoll',
     mannerTierImg: require('../assets/images/diamond.png'),
-    championImg: require('../assets/images/Galio.png'),
+    championImg: require('../assets/images/Irelia.png'),
     rank: 'Gold 3',
     nickname: '겨드랑이에낀손',
     winRate: '승률 59%',
